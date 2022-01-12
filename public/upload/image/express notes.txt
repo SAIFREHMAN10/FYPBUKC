@@ -1,0 +1,22 @@
+get read
+post create
+put  update
+delete
+res.write() \\to send multiple html elemnt
+ejs
+pug
+handlebars ko use krna keliye engine hbs
+hbs
+while we use template like hbs:
+app.set("view engine","hbs");
+app.get("",(req,res)=>
+{
+res.render("index")})
+cd to open folder
+res.render("index",{name:"saif"})})// use variable on dynamic screen
+app.set("views","new folder name path");// to use name other than views for templates
+filename -e js,hbs\\for auto updste
+for using patials
+const hbs=require("hbs");
+hbs.registerpartials(partial path);
+{{>patial name}}\\ to call patials

@@ -132,8 +132,10 @@
                                     <select id="teacherCourseCode" class="form-select" name="tcoursecode" value="{{adminteachermanagement.tcoursecode}}">
                                     <option selected>CEN-221</option>
                                     <option>SEN-121</option>
-                                    <option>EE-321</option>
+                                    <option>SEE-321</option>
                                     <option>CEN-654</option>
+                                    <option>CEN-789</option>
+
                                     <option><%=name4%></option>
 
                                   </select>
@@ -184,7 +186,7 @@
         </div>
 
         <div class="addTeacherCard">
-            <div class="row">
+            {{!-- <div class="row">
                 <div class="card ">
                     <div class="card-header">
                         Search a Teacher
@@ -219,7 +221,7 @@
 
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     </div>
@@ -234,7 +236,7 @@
                 <table class="table" id="teachersList">
                     <thead>
                         <tr>
-                             <th scope="col">#</th> 
+                          
                             <th scope="col">Name</th>
                             <th scope="col">Program</th>
                             <th scope="col">UserName</th>
@@ -246,7 +248,7 @@
                     <tbody>
                         {{#each adminteachermanagement}}
                        <tr>
-                            <th scope="row">1</th>
+                           
                             <td>{{this.teachername}}</td>
                             <td>{{this.tprogram}}</td>
                             <td>{{this.tusername}}</td>

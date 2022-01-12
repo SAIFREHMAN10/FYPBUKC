@@ -375,6 +375,14 @@ app.get('/TeacherLanding.ejs', (req, res) => {
         });
     });
 });
+app.get('/StudentDashboard.ejs', (req, res) => {
+
+    Register4.find({}, function(err, movies) {
+        res.render('StudentDashboard.ejs', {
+            movieList: movies
+        });
+    });
+});
 
 ///
 
@@ -405,6 +413,48 @@ app.get('/instructorCourseQuizView.ejs', (req, res) => {
     });*/
     Register8.find({}, function(err, movie) {
         res.render('instructorCourseQuizView.ejs', {
+            movieList: movie
+        });
+    });
+});
+app.get('/studentLectureView.ejs', (req, res) => {
+
+    app.use(express.static(c));
+    /*Register5.find({tusername:tcode}, function(err, movies) {
+        res.render('TeacherCourseSelection.ejs', {
+            moviesList: movies
+        });
+    });*/
+    Register6.find({}, function(err, movie) {
+        res.render('studentLectureView.ejs', {
+            movieList: movie
+        });
+    });
+});
+app.get('/studentQuizView.ejs', (req, res) => {
+
+    app.use(express.static(c));
+    /*Register5.find({tusername:tcode}, function(err, movies) {
+        res.render('TeacherCourseSelection.ejs', {
+            moviesList: movies
+        });
+    });*/
+    Register8.find({}, function(err, movie) {
+        res.render('studentQuizView.ejs', {
+            movieList: movie
+        });
+    });
+});
+app.get('/studentAssignmentView.ejs', (req, res) => {
+
+    app.use(express.static(c));
+    /*Register5.find({tusername:tcode}, function(err, movies) {
+        res.render('TeacherCourseSelection.ejs', {
+            moviesList: movies
+        });
+    });*/
+    Register7.find({}, function(err, movie) {
+        res.render('studentAssignmentView.ejs', {
             movieList: movie
         });
     });
@@ -789,7 +839,11 @@ app.post("/studentlogin",async(req,res)=>
 
         if(emaill.spassword===spassword)
         {
-            res.status(201).render("admindashboard");
+            Register4.find({enrollment:emaill.enrollment}, function(err, movies) {
+                res.render('StudentDashboard.ejs', {
+                    movieList: movies
+                });
+            });
         }
 else{
 res.send("INcorrect");
