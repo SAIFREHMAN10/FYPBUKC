@@ -4,7 +4,11 @@ const path=require("path");
 const hbs=require("hbs");
 const mongoose=require("mongoose");
 const b=path.join(__dirname,"../src/partials");
-
+const ejs = require('ejs');
+const { kStringMaxLength } = require('buffer');
+const multer=require("multer");
+var engines = require('consolidate');
+var tcode;
 const d=path.join(__dirname,"../../../node_modules/bootstrap");
 const e=path.join(__dirname,"../../../node_modules/bootstrap/dist");
 const c=path.join(__dirname,"../../../public");
@@ -19,6 +23,9 @@ const Register2=require("../db/models/admin");
 const Register3=require("../db/models/course");
 const Register4=require("../db/models/students");
 const Register5=require("../db/models/teacher");
+const Register6=require("../db/models/assignment");
+const Register7=require("../db/models/lecture");
+const Register8=require("../db/models/quiz");
 var router = express.Router();
 //var handlebars = require('./helpers/handlebars.js')(hbs);
 //functions
@@ -58,16 +65,127 @@ console.log(err);
 ///////////////FUNCTIONS END
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+//var engines = require('consolidate');
 
+//app.engine('ejs', engines.ejs);
+app.engine("html", engines.swig); // take note, using 'html', not 'ejs' or 'pug'..
+app.set("view engine", "html"); 
+//app.engine('handlebars', engines.handlebars);
 app.set("view engine","hbs");
-hbs.registerPartials(b);
+//app.set("view engine", "ejs");
+//app.engine('handlebars', hbs());
+//hbs.registerPartials(b);
 
 app.get("/",(req,res)=>
 {
     app.use(express.static(c));
-    res.render("landing");
+    res.render("landing.hbs");
+});
+//start
+//const multer = require('multer');
+
+//define storage for the images
+
+const storage = multer.diskStorage({
+  //destination for files
+  destination: function (request, file, callback) {
+    callback(null, "../../../public/upload/image");
+  },
+
+  //add back the extension
+  filename: function (request, file, callback) {
+    callback(null,  file.originalname);
+  },
 });
 
+//upload parameters for multer
+const upload = multer({
+  storage: storage,
+  limits: {
+    fieldSize: 1024 * 1024 * 20,
+  },
+});
+////Download file
+/*const fs=require("fs");
+const url="../../../public/upload/image/Capture.JPG";
+app.get(url,function(res)
+{
+const filestream=fs.createWriteStream("Photo.JPG");
+res.pipe(filestream);
+filestream.on("finish",function()
+{
+    filestream.close();
+    console.log("DONE")
+});
+}
+);*/
+
+
+app.post("/TeacherCourseSelection.ejs", upload.single("image"), async (request, response) => {
+    console.log(request.file);
+    // console.log(request.body);
+    
+    try {
+    let blog = new Register6({
+      Aname:request.body.Aname,
+      lecno:request.body.lecno,
+     img: request.file.filename,
+      active:true
+      
+    });
+  
+     blog = await blog.save();
+  
+      response.redirect('TeacherCourseSelection.ejs');
+    } catch (error) {
+      console.log(error);
+    }
+   
+  });
+  app.post("/instructorCourseAssignmentView.ejs", upload.single("image"), async (request, response) => {
+    console.log(request.file);
+    // console.log(request.body);
+    
+    try {
+    let blog = new Register7({
+      Lname:request.body.Lname,
+      Assno:request.body.Assno,
+     img: request.file.filename,
+      active:true
+      
+    });
+  
+     blog = await blog.save();
+  
+      response.redirect('instructorCourseAssignmentView.ejs');
+    } catch (error) {
+      console.log(error);
+    }
+   
+  });
+  app.post("/instructorCourseQuizView.ejs", upload.single("image"), async (request, response) => {
+    console.log(request.file);
+    // console.log(request.body);
+    
+    try {
+    let blog = new Register8({
+      Qname:request.body.Qname,
+      quizno:request.body.quizno,
+     img: request.file.filename,
+      active:true
+      
+    });
+  
+     blog = await blog.save();
+  
+      response.redirect("instructorCourseQuizView.ejs");
+    } catch (error) {
+      console.log(error);
+    }
+   
+  });
+ 
+//end
 app.get("/adminlogin",async(req,res)=>
 {
     e1= await Register2.findOne({email:"saify_saif80@yahoo.com"},{_id:0,email:1});
@@ -121,11 +239,58 @@ app.get("/adminteachermanagement",(req,res)=>
     });
    // res.render("adminstudentmanagement");
 });
+app.get("/teachercheck",(req,res)=>
+{
+    app.use(express.static(c));
+    Register5.find((err, docs) => {
+        if (!err) {
+            res.render("teachercheck", {
+                admin: docs
+            });
+        }
+        else {
+            console.log('Error in retrieving employee list :' + err);
+        }
+    });
+   // res.render("adminstudentmanagement");
+});
 app.get("/admindashboard",(req,res)=>
 {
     app.use(express.static(c));
     res.render("admindashboard");
 });
+app.get('/TeacherCourseSelection.ejs',(req,res)=>
+{
+    app.use(express.static(c));
+    /*Register5.find({tusername:tcode}, function(err, movies) {
+        res.render('TeacherCourseSelection.ejs', {
+            moviesList: movies
+        });
+    });*/
+    Register6.find({}, function(err, movie) {
+        res.render('TeacherCourseSelection.ejs', {
+            movieList: movie
+        });
+    });
+    /*Register6.find((err, docs) => {
+        if (!err) {
+            res.render("TeacherCourseSelection.ejs", {
+                movieList: docs
+            });
+        }
+        else {
+            console.log('Error in retrieving employee list :' + err);
+        }
+    });*/
+   
+    
+    //res.render("TeacherCourseSelection");
+});
+/*app.get("/TeacherLanding",(req,res)=>
+{
+    app.use(express.static(c));
+    res.render("TeacherLanding");
+});*/
 app.get("/studentupdate",(req,res)=>
 {
     app.use(express.static(c));
@@ -149,6 +314,42 @@ app.get('/delete/:id', function(req,res) {
         else { res.render('adminstudentmanagement'); }
     });
 });
+app.get('/deletel/:id', function(req,res) {
+    Register6.findByIdAndRemove(req.params.id, (err, doc) => {
+        if (!err) {
+            Register6.find({}, function(err, movie) {
+                res.render('TeacherCourseSelection.ejs', {
+                    movieList: movie
+                });
+            });
+        }
+        else { res.render('TeacherLanding.ejs'); }
+    });
+});
+app.get('/deletea/:id', function(req,res) {
+    Register7.findByIdAndRemove(req.params.id, (err, doc) => {
+        if (!err) {
+            Register7.find({}, function(err, movie) {
+                res.render('instructorCourseAssignmentView.ejs', {
+                    movieList: movie
+                });
+            });
+        }
+        else { res.render('TeacherLanding.ejs'); }
+    });
+});
+app.get('/deleteq/:id', function(req,res) {
+    Register8.findByIdAndRemove(req.params.id, (err, doc) => {
+        if (!err) {
+            Register8.find({}, function(err, movie) {
+                res.render('instructorCourseQuizView.ejs', {
+                    movieList: movie
+                });
+            });
+        }
+        else { res.render('TeacherLanding.ejs'); }
+    });
+});
 app.get('/delete1/:id', function(req,res) {
     Register5.findByIdAndRemove(req.params.id, (err, doc) => {
         if (!err) {
@@ -165,6 +366,59 @@ app.get('/delete2/:id', function(req,res) {
         else { res.render('admincoursemanagement'); }
     });
 });
+//app.set("view engine", "ejs");
+app.get('/TeacherLanding.ejs', (req, res) => {
+
+    Register5.find({}, function(err, movies) {
+        res.render('TeacherLanding.ejs', {
+            moviesList: movies
+        });
+    });
+});
+
+///
+
+app.get('/instructorCourseAssignmentView.ejs', (req, res) => {
+    app.use(express.static(c));
+    /*Register5.find({tusername:tcode}, function(err, movies) {
+        res.render('TeacherCourseSelection.ejs', {
+            moviesList: movies
+        });
+    });*/
+    Register7.find({}, function(err, movie) {
+        res.render('instructorCourseAssignmentView.ejs', {
+            movieList: movie
+        });
+    });
+});
+
+////
+
+
+app.get('/instructorCourseQuizView.ejs', (req, res) => {
+
+    app.use(express.static(c));
+    /*Register5.find({tusername:tcode}, function(err, movies) {
+        res.render('TeacherCourseSelection.ejs', {
+            moviesList: movies
+        });
+    });*/
+    Register8.find({}, function(err, movie) {
+        res.render('instructorCourseQuizView.ejs', {
+            movieList: movie
+        });
+    });
+});
+
+///
+/*app.post('/TeacherLanding.ejs', (req, res) => {
+    Register6.find({}, function(err, movie) {
+        res.render('TeacherCourseSelection.ejs', {
+            movieList: movie
+        });
+    });
+    
+});*/
 app.get("/studentlogin",(req,res)=>
 {
     app.use(express.static(c));
@@ -365,7 +619,7 @@ app.post("/adminlogin",async(req,res)=>
 
         if(emaill.password===password)
         {
-            res.status(201).render("admindashboard");
+            res.status(201).render("adminstudentmanagement");
         }
 else{
 res.send("INcorrect");
@@ -411,6 +665,8 @@ app.post("/admincoursemanagement",async(req,res)=>
     
     
 });
+
+
 //adminstudentregister
 app.post("/adminstudentmanagement",async(req,res)=>
 {
@@ -494,7 +750,14 @@ app.post("/teacherlogin",async(req,res)=>
 
         if(emaill.tpassword===tpassword)
         {
-            res.status(201).render("admindashboard");
+            //res.status(201).render("TeacherLanding.ejs");
+            tcode=emaill.tusername;
+            Register5.find({tusername:emaill.tusername}, function(err, movies) {
+                res.render('TeacherLanding.ejs', {
+                    moviesList: movies
+                });
+            });
+            
         }
 else{
 res.send("Incorrect");

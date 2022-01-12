@@ -1,18 +1,23 @@
+.adminlogin h3 {
+  text-align: center; }
+
 .adminlogin-wrapper {
-  border: 1px solid black;
-  border: dotted;
   padding: 5rem;
   z-index: -9000;
   background-position: right; }
 
 .adminlogin-col {
-  border: 2px solid black;
+  border-bottom: 0.15px solid black;
+  border-right: 0.15px solid black;
   border-radius: 1rem;
   padding-top: 2rem;
   height: 25rem;
   box-shadow: 18px 20px 45px -17px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 18px 20px 45px -17px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 18px 20px 45px -17px rgba(0, 0, 0, 0.75); }
+
+.studentlogin h3 {
+  text-align: center; }
 
 .studentlogin-wrapper {
   border: 1px solid black;
@@ -30,15 +35,16 @@
   -webkit-box-shadow: 18px 20px 45px -17px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 18px 20px 45px -17px rgba(0, 0, 0, 0.75); }
 
+.teacherlogin h3 {
+  text-align: center; }
+
 .teacherlogin-wrapper {
-  border: 1px solid black;
   border: dotted;
   padding: 5rem;
   z-index: -9000;
   background-position: right; }
 
 .teacherlogin-col {
-  border: 2px solid black;
   border-radius: 1rem;
   padding-top: 2rem;
   height: 25rem;
@@ -61,11 +67,11 @@ body {
   overflow-x: hidden;
   padding: 1rem; }
 
-a {
-  color: white; }
+a{
+  text-decoration: none;
+}
 
 a:visited {
-  color: white;
   display: block; }
 
 .form-check-input {
@@ -120,57 +126,37 @@ a:visited {
   margin-left: 4.5rem; }
 
 .landing {
-  background-image: url("../../../img/background.jpg");
+  background-image: url("./images/t4.jpg");
+  border-radius: 2rem;
+  background-position: center;
   background-size: cover;
-  height: 100vh; }
+  height: 100vh;
+  z-index: -9000; }
   .landingWrapper-leftBox {
-    color: white;
-    left: 0;
-    background: rgba(41, 43, 44, 0.62);
-    background: radial-gradient(circle farthest-corner at top left, rgba(41, 43, 44, 0.62) 25%, rgba(41, 43, 44, 0.65) 20%, rgba(43, 41, 44, 0.49) 20%);
-    background: -webkit-radial-gradient(circle farthest-corner at top left, rgba(41, 43, 44, 0.62) 25%, rgba(41, 43, 44, 0.65) 20%, rgba(43, 41, 44, 0.49) 20%);
-    background: -moz-radial-gradient(circle farthest-corner at top left, rgba(41, 43, 44, 0.62) 25%, rgba(41, 43, 44, 0.65) 20%, rgba(43, 41, 44, 0.49) 20%);
-    border-radius: 5px;
-    margin-top: 2rem;
     text-align: center;
-    padding-top: 5rem; }
-  .landingWrapper-rightBox {
-    color: white;
-    margin-top: 2rem; }
+    padding-top: 1.5rem; }
   .landingWrapper-rightArrow {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     height: 10rem;
-    box-shadow: 10px 10px 26px -2px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 10px 10px 26px -2px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 26px -2px rgba(0, 0, 0, 0.75);
-    border-radius: 8px 8px 8px 8px;
-    -webkit-border-radius: 8px 8px 8px 8px;
-    -moz-border-radius: 8px 8px 8px 8px;
-    background: rgba(41, 43, 44, 0.62);
-    background: radial-gradient(circle farthest-corner at top left, rgba(41, 43, 44, 0.62) 25%, rgba(41, 43, 44, 0.65) 20%, rgba(43, 41, 44, 0.49) 20%);
-    background: -webkit-radial-gradient(circle farthest-corner at top left, rgba(41, 43, 44, 0.62) 25%, rgba(41, 43, 44, 0.65) 20%, rgba(43, 41, 44, 0.49) 20%);
-    background: -moz-radial-gradient(circle farthest-corner at top left, rgba(41, 43, 44, 0.62) 25%, rgba(41, 43, 44, 0.65) 20%, rgba(43, 41, 44, 0.49) 20%); }
+    color: black;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 7px 0px 39px 0px rgba(0, 0, 0, 0.41), inset;
+    -webkit-box-shadow: 7px 0px 39px 0px rgba(0, 0, 0, 0.41);
+    -moz-box-shadow: 7px 0px 39px 0px rgba(0, 0, 0, 0.41); }
     .landingWrapper-rightArrow:not(:first-child) {
       margin-top: 1rem; }
+    .landingWrapper-rightArrow:hover {
+      background-color: silver;
+      border: 1px solid black; }
   .landingWrapper-rightArrow-top {
-    background-color: #C4C4C6;
-    left: 33rem;
     overflow-x: auto; }
   .landingWrapper-rightArrow-center {
     top: 12rem;
-    background-color: #C4C4C6;
-    left: 33rem; }
+    background-color: #E5E5E5; }
   .landingWrapper-rightArrow-bottom {
     top: 23.9rem;
-    background-color: #C4C4C6;
-    left: 33rem; }
-  .landingWrapper-rightArrow-icon {
-    position: absolute;
-    transform: translate(10%, 50%); }
-    .landingWrapper-rightArrow-icon-text {
-      position: absolute;
-      z-index: 1000;
-      transform: translate(200%, 250%); }
+    background-color: #E5E5E5; }
 
 .addTeacherButton {
   position: absolute;
