@@ -26,6 +26,8 @@ const Register5=require("../db/models/teacher");
 const Register6=require("../db/models/assignment");
 const Register7=require("../db/models/lecture");
 const Register8=require("../db/models/quiz");
+const Register9=require("../db/models/quizstudent");
+const Register10=require("../db/models/assignmentstudent");
 var router = express.Router();
 //var handlebars = require('./helpers/handlebars.js')(hbs);
 //functions
@@ -186,6 +188,48 @@ app.post("/TeacherCourseSelection.ejs", upload.single("image"), async (request, 
   });
  
 //end
+app.post("/studentQuizView.ejs", upload.single("image"), async (request, response) => {
+    console.log(request.file);
+    // console.log(request.body);
+    
+    try {
+    let blog = new Register9({
+     QNA:request.body.QNA,
+      QNO:request.body.QNO,
+     img: request.file.filename,
+      active:true
+      
+    });
+  
+     blog = await blog.save();
+  
+      response.redirect('studentQuizView.ejs');
+    } catch (error) {
+      console.log(error);
+    }
+   
+  });
+  app.post("/studentAssignmentView.ejs", upload.single("image"), async (request, response) => {
+    console.log(request.file);
+    // console.log(request.body);
+    
+    try {
+    let blog = new Register10({
+        Lname:request.body.Lname,
+        Assno:request.body.Assno,
+     img: request.file.filename,
+      active:true
+      
+    });
+  
+     blog = await blog.save();
+  
+      response.redirect('studentAssignmentView.ejs');
+    } catch (error) {
+      console.log(error);
+    }
+   
+  });
 app.get("/adminlogin",async(req,res)=>
 {
     e1= await Register2.findOne({email:"saify_saif80@yahoo.com"},{_id:0,email:1});
@@ -193,6 +237,10 @@ app.get("/adminlogin",async(req,res)=>
     app.use(express.static(c));
     var e2=JSON.stringify(e1);
     res.render("adminlogin",{name5:e2.substr(10,22)});
+});
+app.get("/../../../../../LMSFYP/public/upload/image/images.jpg",async(req,res)=>
+{
+
 });
 app.get("/admincoursemanagement",(req,res)=>
 {
@@ -395,6 +443,32 @@ app.get('/instructorCourseAssignmentView.ejs', (req, res) => {
     });*/
     Register7.find({}, function(err, movie) {
         res.render('instructorCourseAssignmentView.ejs', {
+            movieList: movie
+        });
+    });
+});
+app.get('/instructorSubmittedQuizView.ejs', (req, res) => {
+    app.use(express.static(c));
+    /*Register5.find({tusername:tcode}, function(err, movies) {
+        res.render('TeacherCourseSelection.ejs', {
+            moviesList: movies
+        });
+    });*/
+    Register9.find({}, function(err, movie) {
+        res.render('instructorSubmittedQuizView.ejs', {
+            movieList: movie
+        });
+    });
+});
+app.get('/instructorSubmittedAssignmentView.ejs', (req, res) => {
+    app.use(express.static(c));
+    /*Register5.find({tusername:tcode}, function(err, movies) {
+        res.render('TeacherCourseSelection.ejs', {
+            moviesList: movies
+        });
+    });*/
+    Register10.find({}, function(err, movie) {
+        res.render('instructorSubmittedAssignmentView.ejs', {
             movieList: movie
         });
     });

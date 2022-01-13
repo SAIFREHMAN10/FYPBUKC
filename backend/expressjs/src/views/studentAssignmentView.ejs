@@ -102,7 +102,7 @@
 
                                         <td><button class="btn  btn-secondary" type="button">Download</button> </td>
                                         <td>
-                                            <div class="input-group">
+                                            <!-- <div class="input-group">
                                                 <div class="custom-file">
                                                     <label class="custom-file-label" for="inputGroupFile04"></label>
                                                     <input type="file" class="custom-file-input" id="inputGroupFile04">
@@ -110,6 +110,84 @@
 
                                                 </div>
 
+                                            </div> -->
+
+                                            <!-- /////////////////////////////////////////////////////////////////////// -->
+                                            <!-- //////////////////////////////////////////////////////////////////////// -->
+
+                                            <div class="">
+                                                <a href="" class="btn btn-dark " data-bs-toggle="modal" data-bs-target="#studentdUploadAssignment"> 
+                                                Submit
+                                                Assignment</a>
+        
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="studentdUploadAssignment" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Submit Assignment</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form action="/studentAssignmentView.ejs" method="POST" enctype="multipart/form-data">
+        
+                                                                    <h4 class="h4">Upload your Assignment</h4>
+                                                                    <hr>
+
+                                                                    <div class="input-group col-md-6">
+                                                                        <div
+                                                                            class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text"
+                                                                                    id="inputGroup-sizing-sm">Assignment #</span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control"
+                                                                                aria-label="Small" name="Assno"
+                                                                                aria-describedby="inputGroup-sizing-sm"
+                                                                                value="<%= movie.Assno %>">
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="input-group col-md-6">
+                                                                        <div
+                                                                            class="input-group input-group-sm mb-3">
+                                                                            <div class="input-group-prepend">
+                                                                                <span class="input-group-text"
+                                                                                    id="inputGroup-sizing-sm">Assignment
+                                                                                    Tittle</span>
+                                                                            </div>
+                                                                            <input type="text" class="form-control"
+                                                                                aria-label="Small" name="Lname"
+                                                                                aria-describedby="inputGroup-sizing-sm"
+                                                                                value="<%= movie.Lname %>">
+                                                                        </div>
+                                                                   
+
+                                                                    </div>
+                                                                    <hr>
+                                                                    
+        
+                                                                    <div class="input-group col-md-6">
+                                                                        <div class="custom-file">
+                                                                            <label class="custom-file-label" for="inputGroupFile04"></label>
+                                                                            <br>
+                                                                            <input type="file" class="custom-file-input" name="image" id="inputGroupFile04">
+        
+                                                                        </div>
+        
+                                                                    </div>
+        
+        
+        
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit" class="btn btn-dark">Upload</button>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </td>
                                     </tr>

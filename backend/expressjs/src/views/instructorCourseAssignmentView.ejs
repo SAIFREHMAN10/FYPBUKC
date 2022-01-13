@@ -95,10 +95,11 @@
                                         <th scope="col">Assignment#</th>
 
                                         <th scope="col">Assignment Title</th>
+                                        <th scope="col"></th>
 
                                         <th scope="col">
                                             <div class="">
-                                                <a href="" class="btn btn-dark " data-bs-toggle="modal"
+                                                <a href="" class="btn btn-primary " data-bs-toggle="modal"
                                                     data-bs-target="#uploadAssignment"> +
                                                     Add
                                                     Assignment</a>
@@ -162,6 +163,7 @@
                                                 </div>
                                             </div>
                                         </th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -174,6 +176,9 @@
                                                 
                                             <a href="/deletea/<%=movie._id %>"onclick="return confirm('Are you sure to delete this record ?');"><i  class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
                                         </td>
+                                        <td><a href="./instructorSubmittedAssignmentView.ejs" class="btn btn-dark " > 
+                                            View Submitted
+                                            Assignment</a></td>
                                     </tr>
 
                                     <%})%>

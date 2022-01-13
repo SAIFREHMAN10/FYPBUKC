@@ -10,14 +10,14 @@ const htmlPurify = domPurifier(new JSDOM().window);
 //initialize slug/mongoose.plugin(slug);
 mongoose.plugin(slug);
 const schema10=new mongoose.Schema({
-    QName: {
-        type: String,
-        required:true
-      },
-      QNo: {
-        type: String,
-        required:true
-      },
+  QNA: {
+    type: String,
+    required:true
+  },
+  QNO: {
+    type: String,
+    required:true
+  },
    img:{
         type: String,
        required:true,

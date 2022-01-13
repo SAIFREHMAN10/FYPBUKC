@@ -44,7 +44,7 @@
                                     <li>
                                         <hr class="dropdown-divider" />
                                     </li>
-                                    <li><a class="dropdown-item" href="../../index.html">Sign Out</a></li>
+                                    <li><a class="dropdown-item" href="./landing.hbs">Sign Out</a></li>
                                 </ul>
                             </li>
                         </form>
@@ -91,9 +91,10 @@
                                     <th scope="col">Week#</th>
 
                                     <th scope="col">Quiz Title</th>
+                                    <th></th>
 
                                     <th scope="col"><div class="">
-                                        <a href="" class="btn btn-dark " data-bs-toggle="modal" data-bs-target="#uploadLecture"> +
+                                        <a href="" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#uploadLecture"> +
                                         Add
                                         Quiz</a>
 
@@ -161,6 +162,9 @@
                                                 
                                         <a href="/deleteq/<%=movie._id %>"onclick="return confirm('Are you sure to delete this record ?');"><i  class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
                                     </td>
+                                    <td><a href="./instructorSubmittedQuizView.ejs" class="btn btn-dark " > 
+                                        View Submitted
+                                        Quiz</a></td>
                                 </tr>
                                 <%})%>
 
