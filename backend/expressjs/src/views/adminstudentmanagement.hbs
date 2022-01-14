@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="../stylesheet.css" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <title>Document</title>
+    <title>Admin</title>
 </head>
 
 <body>
@@ -42,16 +42,10 @@
                         </ul>
                         <form class="d-flex">
                             <li class="nav-item dropdown">
-                                <button type="button" class="btn badge bg-dark secondary" data-bs-toggle="dropdown" data-bs-toggle="dropdown">
-                                    Profile
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider" />
-                                    </li>
-                                    <li><a class="dropdown-item" href="../../index.html">Sign Out</a></li>
-                                </ul>
+                                <a type="button" class="btn btn-danger badge " href="/">
+                                    <span class="h5">Sign Out</span>
+                                </a>
+
                             </li>
                         </form>
                     </div>
@@ -65,6 +59,7 @@
  <!-- Main body -->
     <div class="row">
         <div class="col">
+            <br>
             <h2>Manage Students</h2>
         </div>
         <div class="col">
@@ -126,16 +121,20 @@
                                     <label for="addStudent-Password" class="form-label">Password</label>
                                     <input type="password" class="form-control" id="addStudent-Password" name="spassword" value="{{adminstudentmanagement.spassword}}">
                                 </div>
+                                <div class="col-md-6">
+                                    <label for="addStudent-secQues" class="form-label">Enter your childhood best friend name</label>
+                                    <input type="text" class="form-control" id="addStudent-secQues" name="sfriend" value="{{adminstudentmanagement.sfriend}}">
+                                </div>
 
-                                <div class="col-md-6 ">
+                                <div class="col-md-6 courseSelect ">
                                     <label for="addStudent-courseCode " class="form-label ">Course Code</label>
                                     <select id="addStudent-courseCode " class="form-select " name="scoursecode" value="{{adminstudentmanagement.scoursecose}}" multiple>
-                                       
-                                     <option selected>CEN-221</option>
-                                    <option>SEN-121</option>
-                                    <option>SEE-321</option>
-                                    <option>CEN-654</option>
-                                    <option>CEN-789</option>
+                                     
+                                    <option selected>CS-001</option>
+                                    <option>CS-002</option>
+                                    <option>CS-003</option>
+                                    <option>CS-004</option>
+                                     <option>CS-005</option>
                                        
                                   </select>
                                 </div> 
@@ -189,48 +188,48 @@
         </div>
 
         <div class="addCourseCard ">
-            <div class="row ">
-                <div class="card ">
-                    {{!-- <div class="card-header ">
-                        Search a Student
-                    </div> --}}
-                    {{!-- <div class="card-body ">
+            {{!-- <div class="row ">
+                                                <div class="card ">
+                                                    <div class="card-header ">
+                                                        Search a Student
+                                                    </div>
+                                                    <div class="card-body ">
 
-                        <div class="row ">
-                            <div class="col-md-auto ">
-                                <div class="dropdown ">
-                                    <button class="btn btn-dark dropdown-toggle " type="button " id="dropdownMenuButton1 " data-bs-toggle="dropdown " aria-expanded="false ">
-                                        Filter
-                                    </button>
-                                    <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1 ">
-                                        <li><a class="dropdown-item " href="# ">Action</a></li>
-                                        <li><a class="dropdown-item " href="# ">Another action</a></li>
-                                        <li><a class="dropdown-item " href="# ">Something else here</a></li>
-                                    </ul>
-                                </div>
+                                                        <div class="row ">
+                                                            <div class="col-md-auto ">
+                                                                <div class="dropdown ">
+                                                                    <button class="btn btn-dark dropdown-toggle " type="button " id="dropdownMenuButton1 " data-bs-toggle="dropdown " aria-expanded="false ">
+                                                                        Filter
+                                                                    </button>
+                                                                    <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1 ">
+                                                                        <li><a class="dropdown-item " href="# ">Action</a></li>
+                                                                        <li><a class="dropdown-item " href="# ">Another action</a></li>
+                                                                        <li><a class="dropdown-item " href="# ">Something else here</a></li>
+                                                                    </ul>
+                                                                </div>
 
-                            </div>
+                                                            </div>
 
-                            <div class="col ">
-                                <input class="form-control " type="text " placeholder="Enter Student's Name" aria-label="default input example">
+                                                            <div class="col ">
+                                                                <input class="form-control " type="text " placeholder="Enter Student's Name" aria-label="default input example">
 
-                            </div>
-                            <div class="col">
+                                                            </div>
+                                                            <div class="col">
 
-                                <a href="./admincoursemanagement" class="btn btn-dark courseSearchButton">
-                                    <i class="fas fa-search fa-1x"></i></a>
-                            </div>
-                        </div>
+                                                                <a href="./admincoursemanagement" class="btn btn-dark courseSearchButton">
+                                                                    <i class="fas fa-search fa-1x"></i></a>
+                                                            </div>
+                                                        </div>
 
-                    </div> --}}
-                </div>
-            </div>
+                                                    </div>
+                                                </div>
+            </div> --}}
         </div>
     </div>
     </div>
 
     <hr>
-
+<br>
 
 
     <!-- Courses shown below -->
@@ -241,12 +240,12 @@
             <div class="col">
 
 
-                <table  class="table" id="adminStudentsTable">
-                    <thead>
+                <table  class="table table-bordered table-hover table-responsive " id="adminStudentsTable">
+                    <thead >
                         <tr>
                             
                             
-                            <th scope="col">#</th>
+                           
                             <th scope="col">Student Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Enrollment</th>
@@ -254,13 +253,13 @@
                             <th scope="col">Semester</th>
                             <th scope="col">Program</th>
                             <th scope="col">Password</th>
-                            <th></th>
+                            <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
                         {{#each adminstudentmanagement}}
                         <tr>
-                            <th scope="row">1</th>
+                           
                             <td>{{this.studentname}}</td>
                            
                             <td>{{this.semail}}</td>

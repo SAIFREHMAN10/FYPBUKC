@@ -12,6 +12,7 @@ const schema3=new mongoose.Schema({
     tusername:
     {
         type:String,
+        unique:true,
         required:true
     },
     tpassword:
@@ -20,6 +21,11 @@ const schema3=new mongoose.Schema({
         required:true
     },
     tcoursecode:
+    {
+        type:String,
+        required:true
+    },
+    tfriend:
     {
         type:String,
         required:true

@@ -9,9 +9,6 @@ const schema4=new mongoose.Schema({
         type:String,
         required:true
     },
-    instructor:{
-        type:String,
-        required:true},
         credithours:
         {
             type:String,

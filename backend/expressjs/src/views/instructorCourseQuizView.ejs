@@ -36,16 +36,10 @@
                         </ul>
                         <form class="d-flex">
                             <li class="nav-item dropdown">
-                                <button type="button" class="btn badge bg-dark secondary" data-bs-toggle="dropdown" data-bs-toggle="dropdown">
-                      Profile
-                    </button>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider" />
-                                    </li>
-                                    <li><a class="dropdown-item" href="./landing.hbs">Sign Out</a></li>
-                                </ul>
+                                <a type="button" class="btn btn-danger badge " href="/">
+                                    <span class="h5">Sign Out</span>
+                                </a>
+
                             </li>
                         </form>
                     </div>
@@ -91,7 +85,7 @@
                                     <th scope="col">Week#</th>
 
                                     <th scope="col">Quiz Title</th>
-                                    <th></th>
+                                    <th>File Name</th>
 
                                     <th scope="col"><div class="">
                                         <a href="" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#uploadLecture"> +
@@ -154,6 +148,7 @@
                                     <th scope="row"><%= movie.quizno %></th>
 
                                     <td><%= movie.Qname %></td>
+                                    <td><%= movie.img %></td>
 
 
 

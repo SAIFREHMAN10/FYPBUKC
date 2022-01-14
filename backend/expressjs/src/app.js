@@ -307,6 +307,11 @@ app.get("/admindashboard",(req,res)=>
     app.use(express.static(c));
     res.render("admindashboard");
 });
+app.get("/forgotPassword",(req,res)=>
+{
+    app.use(express.static(c));
+    res.render("forgotPassword");
+});
 app.get('/TeacherCourseSelection.ejs',(req,res)=>
 {
     app.use(express.static(c));
@@ -349,6 +354,7 @@ app.get("/teacherupdate",(req,res)=>
     app.use(express.static(c));
     res.render("teacherupdate");
 });
+
 app.get("/courserupdate",(req,res)=>
 {
     app.use(express.static(c));
@@ -460,6 +466,62 @@ app.get('/instructorSubmittedQuizView.ejs', (req, res) => {
         });
     });
 });
+app.get('/download/:id',(req,res)=>{
+    Register6.find({_id:req.params.id},(err,data)=>{
+         if(err){
+             console.log(err)
+         }
+         else{
+             var x= "../../../public/upload/image/"+data[0].img;
+             res.download(x)
+         }
+    })
+})
+app.get('/download1/:id',(req,res)=>{
+    Register7.find({_id:req.params.id},(err,data)=>{
+         if(err){
+             console.log(err)
+         }
+         else{
+             var x= "../../../public/upload/image/"+data[0].img;
+             res.download(x)
+         }
+    })
+})
+app.get('/download2/:id',(req,res)=>{
+    Register8.find({_id:req.params.id},(err,data)=>{
+         if(err){
+             console.log(err)
+         }
+         else{
+             var x= "../../../public/upload/image/"+data[0].img;
+             res.download(x)
+         }
+    })
+})
+app.get('/download3/:id',(req,res)=>{
+    Register10.find({_id:req.params.id},(err,data)=>{
+         if(err){
+             console.log(err)
+         }
+         else{
+             var x= "../../../public/upload/image/"+data[0].img;
+             res.download(x)
+         }
+    })
+})
+app.get('/download4/:id',(req,res)=>{
+    Register9.find({_id:req.params.id},(err,data)=>{
+         if(err){
+             console.log(err)
+         }
+         else{
+             var x= "../../../public/upload/image/"+data[0].img;
+             res.download(x)
+         }
+    })
+})
+
 app.get('/instructorSubmittedAssignmentView.ejs', (req, res) => {
     app.use(express.static(c));
     /*Register5.find({tusername:tcode}, function(err, movies) {
@@ -659,12 +721,56 @@ app.post('/users/:id', function (req,res){
                 }
             });
             });
+            app.post('/usersp/:id', function (req,res){
+    
+                Register4.findOneAndUpdate({ $and: [{ sfriend:req.body.sfriend},{enrollment:req.body.enrollment}]},req.body, { new: true }, (err, doc) => {
+                    if (!err) {
+                        console.log(req.body.sfriend);
+                         res.render("landing"); }
+                    else {
+                        if (err.name == 'ValidationError') {
+                            handleValidationError(err, req.body);
+                            res.render("admincoursemanagement", {
+                                
+                                admincoursemanagement: req.body
+                            });
+                        }
+                        else
+                            console.log('Error during record update : ' + err);
+                    }
+                });
+                });
+                app.post('/userst/:id', function (req,res){
+    
+                    Register5.findOneAndUpdate({$and: [{ tfriend:req.body.tfriend},{tusername:req.body.tusername}]}, req.body, { new: true }, (err, doc) => {
+                        if (!err) {
+                            console.log(req.body.tfriend);
+                             res.render("landing"); }
+                        else {
+                            if (err.name == 'ValidationError') {
+                                handleValidationError(err, req.body);
+                                res.render("admincoursemanagement", {
+                                    
+                                    admincoursemanagement: req.body
+                                });
+                            }
+                            else
+                                console.log('Error during record update : ' + err);
+                        }
+                    });
+                    });
 
+    
 
 app.get("/teacherlogin",(req,res)=>
 {
     app.use(express.static(c));
     res.render("teacherlogin");
+});
+app.get("/forgotPasswordTeacher",(req,res)=>
+{
+    app.use(express.static(c));
+    res.render("forgotPasswordTeacher");
 });
 app.get("/register",(req,res)=>
 
@@ -760,6 +866,7 @@ res.send("INcorrect");
     }
     
 });
+
 //admincourseregister
 app.post("/admincoursemanagement",async(req,res)=>
 {
@@ -768,7 +875,7 @@ app.post("/admincoursemanagement",async(req,res)=>
             {
         coursename:req.body.coursename,
         coursecode:req.body.coursecode,
-        instructor:req.body.instructor,
+     
         credithours:req.body.credithours,
         program:req.body.program,
         semester:req.body.semester,
@@ -810,6 +917,7 @@ app.post("/adminstudentmanagement",async(req,res)=>
         ssemester:req.body.ssemester,
         spassword:req.body.spassword,
         scoursecode:req.body.scoursecode,
+        sfriend:req.body.sfriend,
 
         active:true
 
@@ -842,6 +950,7 @@ app.post("/adminteachermanagement",async(req,res)=>
         tusername:req.body.tusername,
         tpassword:req.body.tpassword,
         tcoursecode:req.body.tcoursecode,
+        tfriend:req.body.tfriend,
        
         active:true
 

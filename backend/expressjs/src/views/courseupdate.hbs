@@ -39,16 +39,10 @@
                         </ul>
                         <form class="d-flex">
                             <li class="nav-item dropdown">
-                                <button type="button" class="btn badge bg-dark secondary" data-bs-toggle="dropdown" data-bs-toggle="dropdown">
-                                    Profile
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider" />
-                                    </li>
-                                    <li><a class="dropdown-item" href="../../index.html">Sign Out</a></li>
-                                </ul>
+                                <a type="button" class="btn btn-danger badge " href="/">
+                                    <span class="h5">Sign Out</span>
+                                </a>
+
                             </li>
                         </form>
                     </div>
@@ -95,10 +89,7 @@
                                     <label for="inputAddress2" class="form-label">Address 2</label>
                                     <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
                                 </div> -->
-                                <div class="col-md-6">
-                                    <label for="instructor" class="form-label">Instructor</label>
-                                    <input type="text" class="form-control" id="instructor" name="instructor" value="{{admincoursemanagement.instructor}}">
-                                </div>
+                             
                                 <div class="col-md-6">
                                     <label for="inputState" class="form-label">Credit Hours</label>
                                     <select id="inputState" class="form-select" name="credithours" value="{{admincoursemanagement.credithours}}">

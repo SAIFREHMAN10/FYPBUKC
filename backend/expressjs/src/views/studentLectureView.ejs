@@ -36,16 +36,10 @@
                         </ul>
                         <form class="d-flex">
                             <li class="nav-item dropdown">
-                                <button type="button" class="btn badge bg-dark secondary" data-bs-toggle="dropdown" data-bs-toggle="dropdown">
-                                    Profile
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider" />
-                                    </li>
-                                    <li><a class="dropdown-item" href="../../index.html">Sign Out</a></li>
-                                </ul>
+                                <a type="button" class="btn btn-danger badge " href="/">
+                                    <span class="h5">Sign Out</span>
+                                </a>
+
                             </li>
                         </form>
                     </div>
@@ -103,15 +97,19 @@
 
                                     <td><%= movie.Aname %></td>
                                     <td><%= movie.img %></td>
-                                    <td><button class="btn  btn-secondary" type="button">Download</button> </td>
                                     <td>
-                                        <div class="input-group">
+                                        <form action="/download/<%=movie._id %>">
+                                            <input type="submit" value="Download" class="btn btn-dark">
+                                           </form>
+                                    </td>
+                                    <td>
+                                        <!-- <div class="input-group">
                                             <div class="custom-file">
                                                 <label class="custom-file-label" for="inputGroupFile04"></label>
                                                 <input type="file" class="custom-file-input" id="inputGroupFile04">
 
 
-                                            </div>
+                                            </div> -->
 
                                         </div>
                                     </td>

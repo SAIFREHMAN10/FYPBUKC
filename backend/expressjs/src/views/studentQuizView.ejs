@@ -39,17 +39,10 @@
                         </ul>
                         <form class="d-flex">
                             <li class="nav-item dropdown">
-                                <button type="button" class="btn badge bg-dark secondary" data-bs-toggle="dropdown"
-                                    data-bs-toggle="dropdown">
-                                    Profile
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider" />
-                                    </li>
-                                    <li><a class="dropdown-item" href="./landing">Sign Out</a></li>
-                                </ul>
+                                <a type="button" class="btn btn-danger badge " href="/">
+                                    <span class="h5">Sign Out</span>
+                                </a>
+
                             </li>
                         </form>
                     </div>
@@ -113,13 +106,15 @@
                                                 <%= movie.Qname %>
                                             </td>
 
-                                            <td><a href="../../../../../LMSFYP/public/upload/image/images.jpg"
-                                                    class="btn btn-dark">Download</a> </td>
+                                            <td>
+                                                <form action="/download2/<%=movie._id %>">
+                                                    <input type="submit" value="Download" class="btn btn-dark">
+                                                   </form>
                                             <td>
                                                 
 
                                                 <div class="">
-                                                    <a href="" class="btn btn-dark " data-bs-toggle="modal"
+                                                    <a href="" class="btn btn-success " data-bs-toggle="modal"
                                                         data-bs-target="#studentdUploadQuiz">
                                                         Submit
                                                         Quiz</a>

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <link rel="stylesheet" href="../stylesheet.css" />
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <title>Document</title>
+    <title>Admin</title>
 </head>
 
 <body>
@@ -39,16 +39,10 @@
                         </ul>
                         <form class="d-flex">
                             <li class="nav-item dropdown">
-                                <button type="button" class="btn badge bg-dark secondary" data-bs-toggle="dropdown" data-bs-toggle="dropdown">
-                                    Profile
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider" />
-                                    </li>
-                                    <li><a class="dropdown-item" href="../../index.html">Sign Out</a></li>
-                                </ul>
+                                <a type="button" class="btn btn-danger badge " href="/">
+                                    <span class="h5">Sign Out</span>
+                                </a>
+
                             </li>
                         </form>
                     </div>
@@ -62,12 +56,14 @@
 
     <div class="row">
         <div class="col">
+            
+            <br>
             <h2>Manage Course</h2>
         </div>
         <div class="col">
+            
             <a href="./admincoursemanagement" class="btn btn-dark addCourseButton" data-bs-toggle="modal" data-bs-target="#exampleModal"> + Add
                 Course</a>
-
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -95,10 +91,7 @@
                                     <label for="inputAddress2" class="form-label">Address 2</label>
                                     <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
                                 </div> -->
-                                <div class="col-md-6">
-                                    <label for="instructor" class="form-label">Instructor</label>
-                                    <input type="text" class="form-control" id="instructor" name="instructor" value="{{admincoursemanagement.instructor}}">
-                                </div>
+                               
                                 <div class="col-md-6">
                                     <label for="inputState" class="form-label">Credit Hours</label>
                                     <select id="inputState" class="form-select" name="credithours" value="{{admincoursemanagement.credithours}}">
@@ -244,20 +237,21 @@
             <div class="col">
 
 
-                <table class="table" id="courselist">
-                    <thead>
+                <table class="table table-bordered table-hover table-responsive" id="courselist">
+                    <thead >
                         <tr>
-                            <th scope="col">#</th>
+                           
                             <th scope="col">Course Name</th>
                             <th scope="col">Course Code</th>
-                              <th scope="col">Instructor</th>
+                             
                             <th scope="col">Credit Hours</th>
                     
                             
                             <th scope="col">Program</th>
                             <th scope="col">Semester</th>
                             
-                            <th></th>
+                            
+                            <th scope="col">Edit</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -266,10 +260,11 @@
                             <th scope="row">1</th>
                             <td>{{this.coursename}}</td>
                             <td>{{this.coursecode}}</td>
-                            <td>{{this.instructor}}</td>
+                           
                           <td>{{this.credithours}}</td>
+                           <td>{{this.program}}</td>
                             <td>{{this.semester}}</td>
-                            <td>{{this.program}}</td>
+                           
                            
 <td>
                 <a href="/users2/{{this._id}}"  ><i class="fa fa-pencil fa-lg" aria-hidden="true" ></i></a>

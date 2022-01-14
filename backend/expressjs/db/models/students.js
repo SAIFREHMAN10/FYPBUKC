@@ -12,7 +12,9 @@ const schema4=new mongoose.Schema({
             enrollment:
             {
                 type:String,
+                unique:true,
                 required:true
+                
             },
             sprogram:
             {
@@ -32,6 +34,11 @@ const schema4=new mongoose.Schema({
             ,scoursecode:
             {
                 type:[String],
+                required:true
+            }
+            ,sfriend:
+            {
+                type:String,
                 required:true
             }
             
